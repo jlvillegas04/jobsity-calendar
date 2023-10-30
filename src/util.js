@@ -8,7 +8,7 @@ export function getMonth(month = dayjs().month()) {
     const daysMatrix = new Array(5).fill([]).map(() => {
         return new Array(7).fill(null).map(() => {
             curMonthCount++;
-            return dayjs(new Date(year, month, curMonthCount))
+            return dayjs(new Date(year, month, curMonthCount));
         });
     });
     return daysMatrix;
