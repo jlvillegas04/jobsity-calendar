@@ -1,7 +1,14 @@
 .days {
-    border: 1px solid gray;
+    border: 1px solid rgb(219, 191, 226);
     display: flex;
     flex-direction: column;
+    .current-day {
+        background-color: #c42eff;
+        color: #fff;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+      }
 
     .days-header {
         display: flex;
@@ -12,12 +19,14 @@
     .days-text-small {
         font-size: 14px;
         margin-top: 10px;
+        font-weight: bold;
+        color: #c42eff;
     }
 
     .days-text {
         font-size: 14px;
-        padding: 10px;
-        margin-bottom: 10px;
+        padding: 6px 8px;
+        margin: 4px 10px;
         text-align: center;
     }
 }
