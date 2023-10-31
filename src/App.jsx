@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import { getMonth } from "./util";
 
@@ -6,10 +6,18 @@ import Header from "./Components/Header/Header";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Month from "./Components/Month/Month";
 
+import GlobalContext from "./context/GlobalContext";
+
 import './App.scss'
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
+  const { monthIndex } = useContext(GlobalContext);
+
+  useEffect(() => {
+    setCurrentMonth(getMonth(monthIndex));
+  }, [monthIndex]);
+
   return (
     <>
       <div className="screen">
