@@ -1,0 +1,58 @@
+.header {
+    padding: 10px 4px;
+    display: flex;
+    align-items: center;
+
+    .header-logo {
+        margin: 10px;
+        width: 30px;
+        height: 30px;
+        color:#3a075f;
+    }
+
+    .header-name {
+        margin: 0 16px;
+        font-size: 24px;
+        font-weight: bold;
+        background: linear-gradient(0deg, #e32cff, #3a075f);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .header-today-btn {
+        margin: 0 10px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid #bbbbbb;
+        background: white;
+        font-weight: bold;
+        color: #474747;
+        cursor: pointer;
+    }
+
+    .header-today-btn:hover {
+        background-color: #f0f0f0;
+    }
+
+    .chevron-btn {
+        background-color: white;
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        margin: 10px;
+    }
+      
+    .chevron-btn svg {
+        font-size: 15px;
+        color: #474747;
+    }
+
+    .chevron-btn:hover {
+        background-color: #f0f0f0;
+    }
+}
