@@ -31,6 +31,7 @@ export default function ContextWrapper(props) {
   const [daySelected, setDaySelected] = useState(dayjs());
   const [showReminderModal, setShowReminderModal] = useState(false);
   const [selectedReminder, setSelectedReminder] = useState(null);
+  const [selectedTime, setSelectedTime] = useState();
   const [savedReminders, dispatchReminder] = useReducer(savedRemindersReducer, [], initReminders);
   
   useEffect(() => {
@@ -54,7 +55,9 @@ export default function ContextWrapper(props) {
       dispatchReminder,
       savedReminders,
       selectedReminder,
-      setSelectedReminder
+      setSelectedReminder,
+      selectedTime,
+      setSelectedTime
       }}>
         {props.children}
     </GlobalContext.Provider>

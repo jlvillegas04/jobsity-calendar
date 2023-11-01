@@ -22,6 +22,9 @@ export default function ReminderModal() {
     const [selectedColor, setSelectedColor] = useState(selectedReminder 
         ? colors.find((color) => color === selectedReminder.color) : colors[0]
     );
+    const [selectedTime, setSelectedTime] = useState(
+        selectedReminder ? selectedReminder.time : "08:00 AM" // Provide a default time
+    );
     
 
 
@@ -36,6 +39,7 @@ export default function ReminderModal() {
             description,
             color: selectedColor,
             day: daySelected.valueOf(),
+            time: selectedTime,
             id: selectedReminder ? selectedReminder.id : Date.now(),
         };
         if (selectedReminder) {
@@ -77,6 +81,13 @@ export default function ReminderModal() {
             <div className="form-body">
                 <div className="body-grid">
                     <p className="form-date">{daySelected.format("dddd, MMMM DD")}</p>
+                    <input
+                        className="form-time"
+                        type="time"
+                        name="time"
+                        value={selectedTime}
+                        onChange={(e) => setSelectedTime(e.target.value)}
+                    />
                     <input
                         className="form-title" 
                         type="text"

@@ -12,6 +12,8 @@ const GlobalContext = React.createContext({
     savedReminders: [],
     selectedReminder: null,
     setSelectedReminder: () => {},
+    selectedTime: null,
+    setSelectedTime: () => {},
 });
 
 export default GlobalContext;
