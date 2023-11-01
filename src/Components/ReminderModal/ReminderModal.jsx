@@ -1,17 +1,51 @@
 import { useContext, useState } from "react";
 
 import { AiOutlineClose } from "react-icons/ai"
-import { BsFillCalendarEventFill } from "react-icons/bs";
+import { BsFillCalendarEventFill, BsFillTrashFill } from "react-icons/bs";
 
 import GlobalContext from "../../context/GlobalContext";
 
 import "./ReminderModal.scss"
 
+const colors = ["#FF5733", "#33FF57", "#337AFF", "#FF33F9", "#FFD700"];
+
 export default function ReminderModal() {
+    const {
+        setShowReminderModal, 
+        daySelected, 
+        dispatchReminder,
+        selectedReminder,
+    } = useContext(GlobalContext);
 
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState(selectedReminder ? selectedReminder.title : "");
+    const [description, setDescription] = useState(selectedReminder ? selectedReminder.description : "");
+    const [selectedColor, setSelectedColor] = useState(selectedReminder 
+        ? colors.find((color) => color === selectedReminder.color) : colors[0]
+    );
+    
 
-    const {setShowReminderModal} = useContext(GlobalContext);
+
+    const handleColorSelect = (color) => {
+        setSelectedColor(color);
+    };
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const calendarReminder = {
+            title, 
+            description,
+            color: selectedColor,
+            day: daySelected.valueOf(),
+            id: selectedReminder ? selectedReminder.id : Date.now(),
+        };
+        if (selectedReminder) {
+            dispatchReminder({ type: 'update', payload: calendarReminder });
+        } else {
+            dispatchReminder({ type: 'push', payload: calendarReminder });
+        }
+        
+        setShowReminderModal(false);
+    }
 
   return (
     <div className="screen-modal">
@@ -19,12 +53,30 @@ export default function ReminderModal() {
             <header className="form-header">
                 <BsFillCalendarEventFill className="form-calendar"/>
 
+                <div>
+                    {selectedReminder && (
+                        <span
+                            onClick={() => {
+                                dispatchReminder({
+                                    type: "delete",
+                                    payload: selectedReminder,
+                                });
+                                setShowReminderModal(false);
+                            }}
+                            className="form-delete" 
+                        >
+                            <BsFillTrashFill />
+                        </span>
+                    )}
+                </div>
+
                 <button className="form-close" onClick={() => setShowReminderModal(false)}>
                     <AiOutlineClose />
                 </button>
             </header>
             <div className="form-body">
                 <div className="body-grid">
+                    <p className="form-date">{daySelected.format("dddd, MMMM DD")}</p>
                     <input
                         className="form-title" 
                         type="text"
@@ -34,8 +86,36 @@ export default function ReminderModal() {
                          onChange={(e) => setTitle(e.target.value)} 
                          required
                     />
+                    <input
+                        className="form-description" 
+                        type="text"
+                         name="description" 
+                         placeholder="Add a description" 
+                         value={description} 
+                         onChange={(e) => setDescription(e.target.value)} 
+                         required
+                    />
+                    <div className="color-picker">
+                        <p>Choose a color:</p>
+                        <div className="color-buttons">
+                            {colors.map((color, index) => (
+                            <button
+                                key={index}
+                                className={`color-button ${selectedColor === color ? 'selected' : ''}`}
+                                style={{ backgroundColor: color }}
+                                onClick={() => handleColorSelect(color)}
+                                type="button"
+                            />
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
+            <footer className="form-footer">
+                <button className="save-btn" onClick={handleSubmit}>
+                    Save
+                </button>               
+            </footer>
         </form>
     </div>
   );

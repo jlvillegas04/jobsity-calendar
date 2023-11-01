@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 const GlobalContext = React.createContext({
@@ -7,6 +8,10 @@ const GlobalContext = React.createContext({
     setDaySelected: (day) => {},
     showReminderModal: false,
     setShowReminderModal: () => {},
+    dispatchReminder: ({type, payload}) => {},
+    savedReminders: [],
+    selectedReminder: null,
+    setSelectedReminder: () => {},
 });
 
 export default GlobalContext;

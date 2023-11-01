@@ -29,4 +29,21 @@
         margin: 4px 10px;
         text-align: center;
     }
+
+    .day-each {
+        flex: 1;
+        cursor: pointer;
+    }
+
+    .singular-event {
+        padding: 0.25rem;
+        margin-right: 0.75rem;
+        color: black;
+        font-size: 0.875rem;
+        border-radius: 0.25rem;
+    }
+      
+    .singular-event:hover {
+        cursor: pointer;
+    }
 }
