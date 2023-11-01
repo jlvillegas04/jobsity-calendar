@@ -1,11 +1,14 @@
-import "./Header.scss";
+import { useContext } from "react";
+import GlobalContext from "../../context/GlobalContext";
+
+import CreateReminderButton from "../ReminderButton/CreateReminderButton"
 
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import { useContext } from "react";
-import GlobalContext from "../../context/GlobalContext";
+
 import dayjs from "dayjs";
 
+import "./Header.scss";
 
 export default function Header() {
   const { monthIndex, setMonthIndex } = useContext(GlobalContext);
@@ -38,6 +41,8 @@ export default function Header() {
       <h2 className="month-year-text">
         {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
       </h2>
+
+      <CreateReminderButton />
     </header>
   )
 }

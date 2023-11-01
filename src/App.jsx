@@ -9,10 +9,11 @@ import Month from "./Components/Month/Month";
 import GlobalContext from "./context/GlobalContext";
 
 import './App.scss'
+import ReminderModal from "./Components/ReminderModal/ReminderModal";
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
-  const { monthIndex } = useContext(GlobalContext);
+  const { monthIndex, showReminderModal } = useContext(GlobalContext);
 
   useEffect(() => {
     setCurrentMonth(getMonth(monthIndex));
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <>
+      {showReminderModal && <ReminderModal />}
       <div className="screen">
         <Header />
         <div className="screen-sidebar">

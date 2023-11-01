@@ -1,0 +1,30 @@
+.create-reminder-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    margin-left: auto;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #bbbbbb;
+    background: white;
+    font-weight: bold;
+    color: #474747;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.create-reminder-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.reminder-plus {
+    height: 25px;
+    width: 25px;
+    color: #e32cff;
+}
+
+.reminder-text {
+    margin-left: 14px;
+}
+
