@@ -6,7 +6,7 @@ import { BsFillCalendarEventFill, BsFillTrashFill } from "react-icons/bs";
 import GlobalContext from "../../context/GlobalContext";
 
 import "./ReminderModal.scss"
-import WeatherForecast from "../Forecast";
+import WeatherForecast from "../WeatherForecast/Forecast";
 
 const colors = ["#FF5733", "#33FF57", "#337AFF", "#FF33F9", "#FFD700"];
 
