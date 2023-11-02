@@ -57,7 +57,7 @@ export default function ContextWrapper(props) {
       selectedReminder,
       setSelectedReminder,
       selectedTime,
-      setSelectedTime
+      setSelectedTime,
       }}>
         {props.children}
     </GlobalContext.Provider>

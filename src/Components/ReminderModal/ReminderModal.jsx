@@ -6,6 +6,7 @@ import { BsFillCalendarEventFill, BsFillTrashFill } from "react-icons/bs";
 import GlobalContext from "../../context/GlobalContext";
 
 import "./ReminderModal.scss"
+import WeatherForecast from "../Forecast";
 
 const colors = ["#FF5733", "#33FF57", "#337AFF", "#FF33F9", "#FFD700"];
 
@@ -23,8 +24,9 @@ export default function ReminderModal() {
         ? colors.find((color) => color === selectedReminder.color) : colors[0]
     );
     const [selectedTime, setSelectedTime] = useState(
-        selectedReminder ? selectedReminder.time : "08:00 AM" // Provide a default time
+        selectedReminder ? selectedReminder.time : "08:00 AM"
     );
+
     
 
 
@@ -106,6 +108,7 @@ export default function ReminderModal() {
                          onChange={(e) => setDescription(e.target.value)} 
                          required
                     />
+                    <WeatherForecast />
                     <div className="color-picker">
                         <p>Choose a color:</p>
                         <div className="color-buttons">
