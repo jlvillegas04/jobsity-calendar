@@ -1,8 +1,9 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from 'react';
 
 import './Forecast.scss'
 
-export default function WeatherForecast() {
+export default function WeatherForecast({ reminderKey }) {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
@@ -11,6 +12,13 @@ export default function WeatherForecast() {
 
   const apiKey = "7cf25fddc4d4eb12b92a6b9a277f7257";
   const apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
+
+  useEffect(() => {
+    const savedCity = localStorage.getItem(`savedCity_${reminderKey}`);
+    if (savedCity) {
+      setCity(savedCity);
+    }
+  }, [reminderKey]);
 
   async function checkWeather() {
     if (!city) {
@@ -27,6 +35,8 @@ export default function WeatherForecast() {
         const data = await response.json();
         setWeatherData(data);
         setError(null);
+
+        localStorage.setItem(`savedCity_${reminderKey}`, city);
       }
     } catch (error) {
       console.error('Error fetching weather data:', error);

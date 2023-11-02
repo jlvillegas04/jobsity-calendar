@@ -108,7 +108,10 @@ export default function ReminderModal() {
                          onChange={(e) => setDescription(e.target.value)} 
                          required
                     />
-                    <WeatherForecast />
+                    <WeatherForecast 
+                        key={selectedReminder ? selectedReminder.id : Date.now()}
+                        reminderKey={selectedReminder ? selectedReminder.id : Date.now()}
+                    />
                     <div className="color-picker">
                         <p>Choose a color:</p>
                         <div className="color-buttons">

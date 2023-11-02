@@ -22,7 +22,12 @@ function savedRemindersReducer(state, {type, payload}) {
 function initReminders() {
   const storageReminders = localStorage.getItem('savedReminders');
   const parsedReminders = storageReminders ? JSON.parse(storageReminders) : [];
-  return parsedReminders;
+  return parsedReminders.map(reminder => {
+    return {
+      ...reminder,
+      city: '',
+    };
+  });
 }
 
 export default function ContextWrapper(props) {
